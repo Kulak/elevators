@@ -16,7 +16,9 @@ export class ElevatorsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.elevators = this.buildingService.getElevators()
+    this.buildingService.getElevators().subscribe(
+      elevators => this.elevators = elevators
+    )
   }
 
   onSelect(elevator: Elevator): void {

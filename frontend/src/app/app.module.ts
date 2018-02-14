@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
+import { HttpClientModule } from '@angular/common/http'
 
 import { AppComponent } from './app.component'
 import { ElevatorsComponent } from './components/elevators/elevators.component'
@@ -13,7 +14,8 @@ import { BuildingService } from './services/building.service'
     ElevatorComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
   providers: [
     BuildingService

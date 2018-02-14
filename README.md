@@ -6,6 +6,11 @@ Nodejs is used to manage both backend and frontend project.  This simplifies ins
 
 A single GIT repository is used to manage both projects to simplify snapshotting of functional application state.  Usually a meta project would be setup that ties separate GIT repositories using GIT submodules feature.  GIT submodules feature complicates source code management and is a deterrant during early development stages when both backend and frontend change significantly.
 
+## Development Environment
+
+OS: Windows  
+IDE: Visual Studio Code
+
 ## Shared Prerequisites
 
 1. Git
@@ -28,3 +33,29 @@ https://nodejs.org/en/
 ### Angular Download and Installation
 
     npm install -g @angular/cli
+
+## Run Configuration
+
+The project is hardcoded to run on the following ports:
+
+TCP port 4200 serves frontend project and acts as a static web server.
+
+TCP port 3000 serves REST API project and service as application web server without static web pages.
+
+### Frontend Development Process
+
+In PowerShell:
+
+    cd frontend/
+    ng serve
+
+Changes to source code files will result in automatic recompilation and browser reload.
+
+### Backend Development Process
+
+In PowerShell:
+
+    cd backend/
+    npm dev
+
+The dev script starts 2 separate windows.  One window is for TypeScript recompilation and another window is for server process reload.
