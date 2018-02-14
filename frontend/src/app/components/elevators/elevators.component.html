@@ -1,0 +1,11 @@
+<div>
+  <h3>Elevators</h3>
+  <li *ngFor="let elevator of elevators"
+    [class.selected]="elevator === selectedElevator"
+    (click)="onSelect(elevator)">
+  Elevator <span class="">{{elevator.id}}</span> 
+  servicing {{elevator.bottomFloor}} to {{elevator.topFloor}} floors
+  is at {{elevator.currentFloor}} floor
+  </li>
+  <app-elevator [elevator]="selectedElevator"></app-elevator>
+</div>
