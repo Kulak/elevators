@@ -23,6 +23,9 @@ export class BuildingService {
     return this.http.get<BuildingSection[]>("http://localhost:3000/api/building/elevators")
   }
 
+  /** 
+   * Web socket based way of watching backend application state.
+  */
   monitorBuildingSections(): Observable<BuildingSection[]> {
     if (this.websocket) {
       return this.websocket$
@@ -51,25 +54,6 @@ export class BuildingService {
       this.websocketSubject$.next(sections)
     }
     return this.websocket$
-
-    // let subject = Observable.webSocket('ws://localhost:8081');
-    // subject
-    //   .retry()
-    //   .subscribe(
-    //      (msg) => console.log('message received: ' + msg),
-    //      (err) => console.log(err),
-    //      () => console.log('complete')
-    //    );
-    // subject.next(JSON.stringify({ op: 'hello' }));
-    // return subject
-
-    // const ws = new WebSocket('ws://localhost:3000/');
-    // ws.addEventListener('open', (ev:Event) => {
-    //   console.log("ws open", ev)
-    // })
-    // ws.addEventListener('message', (ev:Event) => {
-    //   console.log("ws message", ev)
-    // })
   }
 
 }
