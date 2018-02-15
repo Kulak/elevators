@@ -8,7 +8,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations'
 import { AppComponent } from './app.component'
 import { ElevatorsComponent } from './components/elevators/elevators.component'
 import { ElevatorComponent } from './components/elevator/elevator.component'
-import { BuildingService } from './services/building.service'
+import { BuildingService } from './services/building.service';
+import { AppRoutingModule } from './/app-routing.module'
 
 /*
 NOTE: import angular material modules after BrowserModule, because order matters.
@@ -25,7 +26,8 @@ NOTE: import angular material modules after BrowserModule, because order matters
     MatListModule,
     MatExpansionModule,
     NoopAnimationsModule,
-    MatIconModule
+    MatIconModule,
+    AppRoutingModule
   ],
   providers: [
     BuildingService
