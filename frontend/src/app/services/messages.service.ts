@@ -10,6 +10,9 @@ export class MessagesService {
     this.messages.push(message)
   }
 
+  /** 
+   * Returns up to 3 most recent messages.
+  */
   getMessages(): string[] {
     const len = this.messages.length
     const amount = 3
