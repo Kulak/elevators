@@ -69,3 +69,4 @@ Resources used to create this project.
 3. [NodeJS API: setInterfal](https://nodejs.org/dist/latest-v8.x/docs/api/all.html#timers_setinterval_callback_delay_args)
 4. [ws: a Node.js WebSocket library](https://github.com/websockets/ws)
 5. [Simple WebSocket Client](https://chrome.google.com/webstore/detail/simple-websocket-client/pfdhoblngboilpfeibdedpjgfnlcodoo) Chrome Extension
+6. [Anatomy of an HTTP Transaction](https://nodejs.org/en/docs/guides/anatomy-of-an-http-transaction/)

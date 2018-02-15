@@ -89,17 +89,21 @@ wss.on('connection', (ws: webs, req: http.IncomingMessage) => {
 
         ws.on('error', (err) => {
             console.error("Web socket ERROR", err)
+            // to generate error:
+            // open web socket and terminate the client application abruptly
+            // by closing web socket window in chrome
+            // This generates an error that will crash the process unless this handler exists
+            // 
+            // close event is generated automatically after the error event
         })
 })
-
-/* TODO: detect dead web sockets */
 
 const interval = setInterval(() => {
     sceneSvc.oneCycle();
     wsSessions.forEach((ws:webs) => {
         ws.send(JSON.stringify(buildingSection))
     })
-}, 60 * 1000);
+}, 5 * 1000);
 
 server.listen(process.env.PORT || 3000, () => {
     console.log(`Server started on port ${server.address().port}`)
