@@ -82,16 +82,12 @@ export class BuildingSectionService {
     findContainer(targetPerson: Person):ElevatorContainer {
         return this.containers.find((container:ElevatorContainer) => {
             return container.person == targetPerson
-            /* the following code is for a collection of people */
-            // let foundPerson = container.people.find((person:Person) => {
-            //     return targetPerson == person
-            // })
-            // return foundPerson != null
         })
     }
 
     oneCycle(): void {
-        this.buildingSection.elevators.forEach((elevator:Elevator) => {
+        this.containers.forEach((container:ElevatorContainer) => {
+            let elevator = container.elevator
             if (elevator.targetFloor != elevator.currentFloor) {
                 // move
                 elevator.move()
