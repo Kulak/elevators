@@ -82,7 +82,11 @@ export class Elevator {
     movementStatus():string {
         let delta = this.currentFloor-this.targetFloor
         if (delta == 0) {
-            return ""
+            if (this.doorsClosed) {
+                return ""
+            } else {
+                return "doors open"
+            }
         } else if (delta < 0) {
             return "going up"
         } else {

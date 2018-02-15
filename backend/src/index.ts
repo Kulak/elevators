@@ -25,8 +25,8 @@ const buildingSectionSvc = new BuildingSectionService(buildingSection)
 /* emulate changes to the building through scene */
 const people = [
     // name, current floor, target floor
-    new Person("Bob", buildingSection.topFloor, buildingSection.bottomFloor)//,
-    // new Person("Alice", buildingSection.bottomFloor, buildingSection.topFloor),
+    new Person("Bob", buildingSection.topFloor, buildingSection.bottomFloor),
+    new Person("Alice", 2, 4)
     // new Person("Jeff", buildingSection.topFloor - 2, buildingSection.bottomFloor)
 ]
 const peopleSvc = new PeopleService(buildingSectionSvc, people)
