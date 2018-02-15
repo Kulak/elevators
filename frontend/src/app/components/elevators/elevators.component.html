@@ -4,14 +4,14 @@
     <p>Servicing from {{section.bottomFloor}} to {{section.topFloor}} floors.</p>
 
     <h4>Elevators</h4>
-    <mat-list *ngFor="let elevator of section.elevators">
-      <mat-list-item
-        [class.selected]="elevator === selectedElevator"
-        (click)="onSelect(elevator)">
-        Elevator #{{elevator.id}} is on floor {{elevator.currentFloor}}
-        Doors are {{!!elevator.doorsClosed ? "closed" : "open"}}
+    <mat-list>
+      <mat-list-item *ngFor="let elevator of section.elevators"
+      [class.selected]="elevator === selectedElevator"
+      (click)="onSelect(elevator)">
+        <mat-icon></mat-icon>
+        <p>Floor {{elevator.currentFloor}} {{!!elevator.movementStatus() ? " - " : ""}} {{elevator.movementStatus()}}</p>
+        <mat-divider></mat-divider>
       </mat-list-item>
-      <mat-divider></mat-divider>
     </mat-list>
   </div>
   <app-elevator [elevator]="selectedElevator"></app-elevator>

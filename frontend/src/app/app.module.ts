@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 import { HttpClientModule } from '@angular/common/http'
-import { MatListModule, MatExpansionModule } from '@angular/material'
+import { MatListModule, MatExpansionModule, MatIconModule, MatIcon
+} from '@angular/material'
+import { NoopAnimationsModule } from '@angular/platform-browser/animations'
 
 import { AppComponent } from './app.component'
 import { ElevatorsComponent } from './components/elevators/elevators.component'
@@ -21,7 +23,9 @@ NOTE: import angular material modules after BrowserModule, because order matters
     BrowserModule,
     HttpClientModule,
     MatListModule,
-    MatExpansionModule
+    MatExpansionModule,
+    NoopAnimationsModule,
+    MatIconModule
   ],
   providers: [
     BuildingService
