@@ -21,10 +21,19 @@ export class Person {
  * People interract with the building.
 */
 export class PeopleService {
+    private people: Person[] = []
+
     constructor(
-        private buildingSectionSevice: BuildingSectionService,
-        private people: Person[]
-    ) {}
+        private sectionSvc: BuildingSectionService,
+    ) {
+        let section = sectionSvc.getBuildingSection()
+        this.people = [
+            // name, current floor, target floor
+            new Person("Bob", section.topFloor, section.bottomFloor),
+            new Person("Alice", 2, 4)
+            // new Person("Jeff", buildingSection.topFloor - 2, buildingSection.bottomFloor)
+        ]
+    }
 
     public oneCycle():void {
         this.people.forEach((person:Person) =>{
@@ -32,11 +41,11 @@ export class PeopleService {
                 person.goBack()
             }
             // work to our goal
-            let container = this.buildingSectionSevice.findContainer(person)
+            let container = this.sectionSvc.findContainer(person)
             if (container == null)  {
                 // not in elevator; call an elevator regardless if one has been called already
                 console.log("people service: %s is not in any elevator", person.name)
-                let arrivedContainer = this.buildingSectionSevice.requestElevator(person.currentFloor);
+                let arrivedContainer = this.sectionSvc.requestElevator(person.currentFloor);
                 if (arrivedContainer != null) {
                     // enter into elevator and send it to the target floor
                     arrivedContainer.enter(person)

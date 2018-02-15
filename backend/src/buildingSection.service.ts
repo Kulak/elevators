@@ -30,14 +30,23 @@ export class ElevatorContainer {
 
 export class BuildingSectionService {
     private containers: ElevatorContainer[]
+    private buildingSection: BuildingSection
 
-    constructor(
-        private buildingSection: BuildingSection
-    ) {
+    constructor() {
+        let nextElevatorId = 1
+        this.buildingSection = new BuildingSection(1, 8, [
+            new Elevator(nextElevatorId++, 1, 1, true),
+            new Elevator(nextElevatorId++, 1, 1, true),
+            new Elevator(nextElevatorId++, 1, 1, true)
+        ])
         this.containers = []
-        buildingSection.elevators.forEach((elevator:Elevator) => {
+        this.buildingSection.elevators.forEach((elevator:Elevator) => {
             this.containers.push(new ElevatorContainer(elevator))
         })
+    }
+
+    getBuildingSection(): BuildingSection {
+        return this.buildingSection
     }
 
     // Building section sends one elevator if there is idle elevator
