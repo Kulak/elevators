@@ -10,7 +10,7 @@ export class BuildingService {
     private http:HttpClient
   ) { }
 
-  getBuildingSection(): Observable<BuildingSection[]> {
+  getBuildingSections(): Observable<BuildingSection[]> {
     return this.http.get<BuildingSection[]>("http://localhost:3000/api/building/elevators")
   }
 
