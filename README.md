@@ -70,3 +70,4 @@ Resources used to create this project.
 4. [ws: a Node.js WebSocket library](https://github.com/websockets/ws)
 5. [Simple WebSocket Client](https://chrome.google.com/webstore/detail/simple-websocket-client/pfdhoblngboilpfeibdedpjgfnlcodoo) Chrome Extension
 6. [Anatomy of an HTTP Transaction](https://nodejs.org/en/docs/guides/anatomy-of-an-http-transaction/)
+7. [Websocket with Observable](https://stackoverflow.com/questions/44060315/reconnecting-a-websocket-in-angular-and-rxjs/44067972#44067972) for Angular version of Observable using rxjs.
