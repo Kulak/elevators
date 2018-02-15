@@ -1,5 +1,6 @@
 import * as express from "express"
 import * as http from "http"
+import * as net from "net"
 import * as webs from 'ws'
 import * as url from 'url'
 
@@ -10,6 +11,9 @@ import { SceneService } from "./scene.service";
 import { PeopleService, Person } from "./people.service";
 
 const app = express();
+app.on('error', (err) => {
+    console.error("Error: ", err)
+})
 const server = http.createServer(app);
 let nextElevatorId = 1
 const buildingSection = new BuildingSection(1, 8, [
@@ -83,6 +87,10 @@ wss.on('connection', (ws: webs, req: http.IncomingMessage) => {
                 console.error("Failed to locate ws")
             }
         })
+
+        ws.on('error', (err) => {
+            console.error("Web socket ERROR", err)
+        })
 })
 
 /* TODO: detect dead web sockets */
@@ -92,7 +100,7 @@ const interval = setInterval(() => {
     wsSessions.forEach((ws:webs) => {
         ws.send(JSON.stringify(buildingSection))
     })
-}, 2000);
+}, 60 * 1000);
 
 server.listen(process.env.PORT || 3000, () => {
     console.log(`Server started on port ${server.address().port}`)
