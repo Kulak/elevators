@@ -42,6 +42,15 @@ TCP port 4200 serves frontend project and acts as a static web server.
 
 TCP port 3000 serves REST API project and service as application web server without static web pages.
 
+### Backend Development Process
+
+In PowerShell:
+
+    cd backend/
+    npm run dev
+
+The dev script starts 2 separate windows.  One window is for TypeScript recompilation and another window is for server process reload.
+
 ### Frontend Development Process
 
 In PowerShell:
@@ -50,15 +59,6 @@ In PowerShell:
     ng serve
 
 Changes to source code files will result in automatic recompilation and browser reload.
-
-### Backend Development Process
-
-In PowerShell:
-
-    cd backend/
-    npm dev
-
-The dev script starts 2 separate windows.  One window is for TypeScript recompilation and another window is for server process reload.
 
 ## References
 
