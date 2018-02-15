@@ -66,4 +66,6 @@ Resources used to create this project.
 
 1. [WebSocket+Express Example](https://github.com/websockets/ws#expressjs-example)
 2. [WebSocket+NodeJS+Express in TypeScript](https://medium.com/factory-mind/websocket-node-js-express-step-by-step-using-typescript-725114ad5fe4)
-3. 
+3. [NodeJS API: setInterfal](https://nodejs.org/dist/latest-v8.x/docs/api/all.html#timers_setinterval_callback_delay_args)
+4. [ws: a Node.js WebSocket library](https://github.com/websockets/ws)
+5. [Simple WebSocket Client](https://chrome.google.com/webstore/detail/simple-websocket-client/pfdhoblngboilpfeibdedpjgfnlcodoo) Chrome Extension

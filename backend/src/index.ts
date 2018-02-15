@@ -75,6 +75,13 @@ wss.on('connection', (ws: webs, req: http.IncomingMessage) => {
 
         ws.on('close', () => {
             console.log("ws %i closed", connId)
+            let idx = wsSessions.indexOf(ws, 0)
+            if (idx > -1) {
+                wsSessions.splice(idx, 1)
+                console.log("removed web socket, total active: %i", wsSessions.length)
+            } else {
+                console.error("Failed to locate ws")
+            }
         })
 })
 

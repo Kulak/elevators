@@ -11,10 +11,6 @@ export class ElevatorContainer {
         // or people to support multiple
         public person: Person = null
     ) {}
-
-    // isIdle(): boolean {
-    //     return this.elevator.isIdle() && this.people.length == 0
-    // }
 }
 
 export class BuildingSectionService {
