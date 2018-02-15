@@ -3,9 +3,9 @@ import * as http from "http"
 import * as webs from 'ws'
 import * as url from 'url'
 
-import { BuildingSectionService } from "./buildingSection.service"
-import { SceneService } from "./scene.service";
-import { PeopleService, Person } from "./people.service";
+import { BuildingSectionService } from "./services/buildingSection.service"
+import { SceneService } from "./services/scene.service";
+import { PeopleService, Person } from "./services/people.service";
 
 const app = express();
 app.on('error', (err) => {

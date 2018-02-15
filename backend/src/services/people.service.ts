@@ -1,5 +1,5 @@
 import { BuildingSectionService } from "./buildingSection.service";
-import { Elevator } from "./model/wire/elevator";
+import { Elevator } from "../model/wire/elevator";
 
 export class Person {
     constructor(
