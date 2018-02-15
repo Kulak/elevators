@@ -3,9 +3,7 @@ import * as http from "http"
 import * as webs from 'ws'
 import * as url from 'url'
 
-import { BuildingSection } from './wire/buildingSection'
 import { BuildingSectionService } from "./buildingSection.service"
-import { Elevator } from "./wire/elevator";
 import { SceneService } from "./scene.service";
 import { PeopleService, Person } from "./people.service";
 

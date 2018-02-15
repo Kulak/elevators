@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core'
 import { HttpClient } from '@angular/common/http'
 import { Observable } from 'rxjs/Observable'
 import { BehaviorSubject } from 'rxjs/BehaviorSubject'
-import { BuildingSection } from '../wire/buildingSection'
-import { Elevator } from '../wire/elevator';
+import { BuildingSection } from '../model/wire/buildingSection'
+import { Elevator } from '../model/wire/elevator';
 
 @Injectable()
 export class BuildingService {

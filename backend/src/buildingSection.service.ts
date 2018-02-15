@@ -1,5 +1,5 @@
-import { BuildingSection } from './wire/buildingSection'
-import { Elevator } from './wire/elevator';
+import { BuildingSection } from './model/wire/buildingSection'
+import { Elevator } from './model/wire/elevator';
 import { Person } from './people.service';
 
 // Tracks person in the elevator relationship.

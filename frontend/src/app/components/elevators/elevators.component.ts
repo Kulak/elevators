@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core'
-import { Elevator } from '../../wire/elevator'
+import { Elevator } from '../../model/wire/elevator'
 import { BuildingService } from '../../services/building.service'
-import { BuildingSection } from '../../wire/buildingSection';
+import { BuildingSection } from '../../model/wire/buildingSection';
 
 @Component({
   selector: 'app-elevators',

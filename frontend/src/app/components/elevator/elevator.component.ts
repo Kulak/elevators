@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core'
-import  { Elevator } from '../../wire/elevator'
+import  { Elevator } from '../../model/wire/elevator'
 
 @Component({
   selector: 'app-elevator',
