@@ -11,6 +11,21 @@ export class ElevatorContainer {
         // or people to support multiple
         public person: Person = null
     ) {}
+
+    public enter(person:Person):void {
+        console.log("person %s entered elevator %i and is going to %i floor", 
+            person.name, this.elevator.id, person.targetFloor)
+        this.person = person
+        this.elevator.closeDoorsAndSendTo(person.targetFloor)
+    }
+
+    public leave():boolean {
+        console.log("preson %s left elevator %i", this.person.name, this.elevator.id)
+        this.person.currentFloor = this.elevator.currentFloor
+        this.person = null
+        this.elevator.closeDoors()
+        return true
+    }
 }
 
 export class BuildingSectionService {
@@ -62,21 +77,6 @@ export class BuildingSectionService {
             return success
         })
         return null
-    }
-
-    enterElevator(container:ElevatorContainer, person:Person):void {
-        console.log("person %s entered elevator %i and is going to %i floor", 
-            person.name, container.elevator.id, person.targetFloor)
-        container.person = person
-        container.elevator.closeDoorsAndSendTo(person.targetFloor)
-    }
-
-    leaveElevator(container:ElevatorContainer):boolean {
-        console.log("preson %s left elevator %i", container.person.name, container.elevator.id)
-        container.person.currentFloor = container.elevator.currentFloor
-        container.person = null
-        container.elevator.closeDoors()
-        return true
     }
 
     findContainer(targetPerson: Person):ElevatorContainer {

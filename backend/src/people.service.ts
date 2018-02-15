@@ -39,14 +39,14 @@ export class PeopleService {
                 let arrivedContainer = this.buildingSectionSevice.requestElevator(person.currentFloor);
                 if (arrivedContainer != null) {
                     // enter into elevator and send it to the target floor
-                    this.buildingSectionSevice.enterElevator(arrivedContainer, person)
+                    arrivedContainer.enter(person)
                 }
             } else {
                 // in elevator; check if it is time to leave the elevator
                 console.log("person %s is in elevator %i", person.name, container.elevator.id)
                 if (container.elevator.currentFloor == container.person.targetFloor) {
                     // leave elevator
-                    this.buildingSectionSevice.leaveElevator(container)
+                    container.leave()
                 }
             }
         })
