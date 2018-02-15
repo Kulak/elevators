@@ -20,6 +20,23 @@ export class ElevatorsComponent implements OnInit {
     this.buildingService.monitorBuildingSections().subscribe(
       (sections:BuildingSection[]) => {
         console.log("received update", typeof(sections), sections)
+        if (this.selectedElevator) {
+          // find selected elevator object in the new graph
+          // and set it or unset if not found
+          let id = this.selectedElevator.id
+          this.selectedElevator = null
+          sections.find(
+            section => section.elevators.find(
+                elevator => {
+                  if (elevator.id == id) {
+                    // assign new elevator object
+                    this.selectedElevator = elevator
+                    return true
+                  }
+                  return false
+                }) != null
+          )
+        }
         this.sections = sections
       }
     )

@@ -7,7 +7,9 @@
     <li *ngFor="let elevator of section.elevators"
       [class.selected]="elevator === selectedElevator"
       (click)="onSelect(elevator)">
-        Elevator <span class="">{{elevator.id}}</span> is at {{elevator.currentFloor}} floor
+        Elevator <span class="">{{elevator.id}}</span> is at {{elevator.currentFloor}} floor;
+        doors {{!!elevator.doorsClosed ? "closed" : "open"}};
+        target floor is {{elevator.targetFloor}}
     </li>
   </div>
   <app-elevator [elevator]="selectedElevator"></app-elevator>
