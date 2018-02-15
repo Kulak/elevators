@@ -59,3 +59,11 @@ In PowerShell:
     npm dev
 
 The dev script starts 2 separate windows.  One window is for TypeScript recompilation and another window is for server process reload.
+
+## References
+
+Resources used to create this project.
+
+1. [WebSocket+Express Example](https://github.com/websockets/ws#expressjs-example)
+2. [WebSocket+NodeJS+Express in TypeScript](https://medium.com/factory-mind/websocket-node-js-express-step-by-step-using-typescript-725114ad5fe4)
+3. 

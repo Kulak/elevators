@@ -17,12 +17,6 @@ export class Elevator {
     constructor(
         // id uniquely identifies eleveator instance
         public id: number,
-        // bottomFloor points to the lowest floor number 
-        // on the building scale.
-        public bottomFloor: number,
-        // topFloor points to the highest floor number 
-        // on the building scale.
-        public topFloor: number,
         // currentFloor points to the floor being occupied by the elevator.
         //
         // floating value is used to represent the status of the elevator
@@ -31,6 +25,58 @@ export class Elevator {
         // If the current floor number is within 0.0001 it is considered
         // that elevator has safely reached the floor and doors can be 
         // opened.
-        public currentFloor: number    
+        public currentFloor: number,
+        public targetFloor: number,
+        public doorsClosed: boolean
     ) {}
+
+    isIdle(): boolean {
+        return (this.currentFloor == this.targetFloor) && this.doorsClosed
+    }
+
+    sendIdleTo(floor: number): boolean {
+        if (this.isIdle()) {
+            this.targetFloor = floor
+            return true
+        }
+        return false
+    }
+
+    move() {
+        let direction = 1
+        if (this.targetFloor < this.currentFloor) {
+            direction = -1
+        }
+        this.currentFloor += direction
+        console.log("elevator %i moved to %i floor", this.id, this.currentFloor)
+        // check if arrived
+        if (this.targetFloor == this.currentFloor) {
+            // arrived; open doors
+            this.openDoors()
+        }
+    }
+
+    openDoors() {
+        if (this.doorsClosed) {
+            this.doorsClosed = false
+            console.log("elevator %i doors opened", this.id)
+        }
+    }
+
+    closeDoors() {
+        if (!this.doorsClosed) {
+            this.doorsClosed = true
+            console.log("elevator %i doors closed", this.id)
+        }
+    }
+
+    /**
+     * Returns true if doors were closed and elevator is moving to the target floor.
+     * @param targetFloor 
+     */
+    closeDoorsAndSendTo(targetFloor: number):void {
+        this.doorsClosed = true
+        this.targetFloor = targetFloor
+    }
+
 }
