@@ -70,12 +70,8 @@ export class Elevator {
         }
     }
 
-    /**
-     * Returns true if doors were closed and elevator is moving to the target floor.
-     * @param targetFloor 
-     */
     closeDoorsAndSendTo(targetFloor: number):void {
-        this.doorsClosed = true
+        this.closeDoors()
         this.targetFloor = targetFloor
     }
 

@@ -30,55 +30,6 @@ export class Elevator {
         public doorsClosed: boolean
     ) {}
 
-    isIdle(): boolean {
-        return (this.currentFloor == this.targetFloor) && this.doorsClosed
-    }
-
-    sendIdleTo(floor: number): boolean {
-        if (this.isIdle()) {
-            this.targetFloor = floor
-            return true
-        }
-        return false
-    }
-
-    move() {
-        let direction = 1
-        if (this.targetFloor < this.currentFloor) {
-            direction = -1
-        }
-        this.currentFloor += direction
-        console.log("elevator %i moved to %i floor", this.id, this.currentFloor)
-        // check if arrived
-        if (this.targetFloor == this.currentFloor) {
-            // arrived; open doors
-            this.openDoors()
-        }
-    }
-
-    openDoors() {
-        if (this.doorsClosed) {
-            this.doorsClosed = false
-            console.log("elevator %i doors opened", this.id)
-        }
-    }
-
-    closeDoors() {
-        if (!this.doorsClosed) {
-            this.doorsClosed = true
-            console.log("elevator %i doors closed", this.id)
-        }
-    }
-
-    /**
-     * Returns true if doors were closed and elevator is moving to the target floor.
-     * @param targetFloor 
-     */
-    closeDoorsAndSendTo(targetFloor: number):void {
-        this.doorsClosed = true
-        this.targetFloor = targetFloor
-    }
-
     movementStatus():string {
         let delta = this.currentFloor-this.targetFloor
         if (delta == 0) {
