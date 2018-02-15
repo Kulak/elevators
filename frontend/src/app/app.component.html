@@ -1,9 +1,12 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
   <h1>
-    <h1>Elevators Control Room</h1>
+    <h1>Elevators Monitor</h1>
   </h1>
 </div>
 <div>
-  <app-elevators></app-elevators>
+  <nav>
+    <a mat-raised-button routerLink="/elevators">Elevators</a>
+    <a mat-raised-button routerLink="/people">People</a>
+  </nav>
+  <router-outlet></router-outlet>
 </div>
