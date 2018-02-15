@@ -25,7 +25,8 @@ export class BuildingService {
    * Standard way to load list of elevators using GET method.
   */
   getBuildingSections(): Observable<BuildingSection[]> {
-    return this.http.get<BuildingSection[]>("http://localhost:3000/api/building/elevators")
+    const url = "http://localhost:3000/api/building/elevators"
+    return this.http.get<BuildingSection[]>(url)
   }
 
   /** 
@@ -36,8 +37,8 @@ export class BuildingService {
       return this.websocket$
     }
 
-    const destination = 'ws://localhost:3000/'
-    this.websocket = new WebSocket(destination)
+    const url = 'ws://localhost:3000/'
+    this.websocket = new WebSocket(url)
 
     this.websocket.onopen = () => {
       console.log("ws connected")
