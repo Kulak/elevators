@@ -21,7 +21,9 @@ import { ElevatorComponent } from './components/elevator/elevator.component'
 import { BuildingService } from './services/building.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { PeopleComponent } from './components/people/people.component';
-import { ElevatorControllerComponent } from './components/elevator-controller/elevator-controller.component'
+import { ElevatorControllerComponent } from './components/elevator-controller/elevator-controller.component';
+import { MessagesComponent } from './components/messages/messages.component'
+import { MessagesService } from './services/messages.service';
 
 /*
 NOTE: import angular material modules after BrowserModule, because order matters.
@@ -32,7 +34,8 @@ NOTE: import angular material modules after BrowserModule, because order matters
     ElevatorsComponent,
     ElevatorComponent,
     PeopleComponent,
-    ElevatorControllerComponent
+    ElevatorControllerComponent,
+    MessagesComponent
   ],
   entryComponents: [
     ElevatorControllerComponent
@@ -55,7 +58,8 @@ NOTE: import angular material modules after BrowserModule, because order matters
     NoopAnimationsModule,
   ],
   providers: [
-    BuildingService
+    BuildingService,
+    MessagesService
   ],
   bootstrap: [AppComponent]
 })
