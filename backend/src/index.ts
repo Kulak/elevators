@@ -55,7 +55,9 @@ app.get("/api/building/elevators", (req,res)=>res.send(buildingSection))
 app.get("/api/scene/cycle", (req,res)=>res.send(sceneSvc.oneCycle()))
 
 let nextConnectionID = 1
+let wsSessions:webs[] = []
 wss.on('connection', (ws: webs, req: http.IncomingMessage) => {
+        wsSessions.push(ws)
         const location = url.parse(req.url, true);
         const connId = nextConnectionID++
         console.log("ws %i connected to %s", connId, req.url)
@@ -79,8 +81,11 @@ wss.on('connection', (ws: webs, req: http.IncomingMessage) => {
 /* TODO: detect dead web sockets */
 
 const interval = setInterval(() => {
-    // sceneSvc.oneCycle();
-}, 10000);
+    sceneSvc.oneCycle();
+    wsSessions.forEach((ws:webs) => {
+        ws.send(JSON.stringify(buildingSection))
+    })
+}, 2000);
 
 server.listen(process.env.PORT || 3000, () => {
     console.log(`Server started on port ${server.address().port}`)
