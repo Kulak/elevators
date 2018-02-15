@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core'
 import { Elevator } from '../../wire/elevator'
 import { BuildingService } from '../../services/building.service'
+import { BuildingSection } from '../../wire/buildingSection';
 
 @Component({
   selector: 'app-elevators',
@@ -8,7 +9,7 @@ import { BuildingService } from '../../services/building.service'
   styleUrls: ['./elevators.component.css']
 })
 export class ElevatorsComponent implements OnInit {
-  elevators: Elevator[]
+  sections: BuildingSection[]
   selectedElevator: Elevator
 
   constructor(
@@ -16,8 +17,11 @@ export class ElevatorsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.buildingService.getElevators().subscribe(
-      elevators => this.elevators = elevators
+    this.buildingService.getBuildingSection().subscribe(
+      (sections:BuildingSection[]) => {
+        console.log("received building section", sections)
+        this.sections = sections
+      }
     )
   }
 

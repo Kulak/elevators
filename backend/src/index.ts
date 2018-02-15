@@ -54,7 +54,7 @@ app.use(function(req, res, next) {
 app.get('/', function (request: express.Request, response: express.Response) {
     response.send('This application service API requests and not the web files.');
 })
-app.get("/api/building/elevators", (req,res)=>res.send(buildingSection))
+app.get("/api/building/elevators", (req,res)=>res.send([buildingSection]))
 app.get("/api/scene/cycle", (req,res)=>res.send(sceneSvc.oneCycle()))
 
 let nextConnectionID = 1
@@ -69,7 +69,7 @@ wss.on('connection', (ws: webs, req: http.IncomingMessage) => {
         ws.on('message', (message: string) => {
             if (message == 'list') {
                 console.log('ws %i list request', connId)
-                ws.send(JSON.stringify(buildingSection))
+                ws.send(JSON.stringify([buildingSection]))
             } else {
                 console.log('ws %i unknown command: %s', connId, message)
                 ws.send(`Error, unknown command -> ${message}`)
