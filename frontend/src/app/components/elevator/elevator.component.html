@@ -1,5 +1,8 @@
 <div *ngIf="elevator">
-    <h3>Elevator Details</h3>
+    <mat-toolbar>
+        <span class="fill-remaining-space">Elevator Details</span>
+        <button mat-raised-button (click)="openDialog()">Change</button>
+    </mat-toolbar>
     <div><span>ID: </span>{{elevator.id}}</div>
     <div><span>Current Floor: </span>{{elevator.currentFloor}}</div>
     <div><span>Target Floor: </span>{{elevator.targetFloor}}</div>

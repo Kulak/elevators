@@ -1,7 +1,17 @@
 import { BrowserModule } from '@angular/platform-browser'
 import { NgModule } from '@angular/core'
 import { HttpClientModule } from '@angular/common/http'
-import { MatListModule, MatExpansionModule, MatIconModule, MatIcon, MatButtonModule
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { // list is sorted alphabetically
+  MatButtonModule,
+  MatDialogModule,
+  MatExpansionModule, 
+  MatIcon, 
+  MatIconModule, 
+  MatInputModule,
+  MatListModule, 
+  MatSidenavModule, 
+  MatToolbarModule, 
 } from '@angular/material'
 import { NoopAnimationsModule } from '@angular/platform-browser/animations'
 
@@ -10,7 +20,8 @@ import { ElevatorsComponent } from './components/elevators/elevators.component'
 import { ElevatorComponent } from './components/elevator/elevator.component'
 import { BuildingService } from './services/building.service';
 import { AppRoutingModule } from './/app-routing.module';
-import { PeopleComponent } from './components/people/people.component'
+import { PeopleComponent } from './components/people/people.component';
+import { ElevatorControllerComponent } from './components/elevator-controller/elevator-controller.component'
 
 /*
 NOTE: import angular material modules after BrowserModule, because order matters.
@@ -20,17 +31,28 @@ NOTE: import angular material modules after BrowserModule, because order matters
     AppComponent,
     ElevatorsComponent,
     ElevatorComponent,
-    PeopleComponent
+    PeopleComponent,
+    ElevatorControllerComponent
+  ],
+  entryComponents: [
+    ElevatorControllerComponent
   ],
   imports: [
     BrowserModule,
+    AppRoutingModule,
     HttpClientModule,
-    MatListModule,
-    MatExpansionModule,
-    NoopAnimationsModule,
-    MatIconModule,
+    FormsModule,
+    ReactiveFormsModule,
+    // list is sorted alphabetically below this line
     MatButtonModule,
-    AppRoutingModule
+    MatDialogModule,
+    MatExpansionModule,
+    MatIconModule,
+    MatInputModule,
+    MatListModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    NoopAnimationsModule,
   ],
   providers: [
     BuildingService

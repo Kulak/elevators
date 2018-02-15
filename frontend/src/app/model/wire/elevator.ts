@@ -32,4 +32,8 @@ export class Elevator {
         }
     }
 
+    clone():Elevator {
+        return Object.create(this)
+    }
+
 }
