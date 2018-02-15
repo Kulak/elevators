@@ -64,7 +64,7 @@ wss.on('connection', (ws: webs, req: http.IncomingMessage) => {
         const location = url.parse(req.url, true);
         const connId = nextConnectionID++
         console.log("ws %i connected to %s", connId, req.url)
-        ws.send(JSON.stringify(buildingSection))
+        ws.send(JSON.stringify([buildingSection]))
 
         ws.on('message', (message: string) => {
             if (message == 'list') {
@@ -101,7 +101,7 @@ wss.on('connection', (ws: webs, req: http.IncomingMessage) => {
 const interval = setInterval(() => {
     sceneSvc.oneCycle();
     wsSessions.forEach((ws:webs) => {
-        ws.send(JSON.stringify(buildingSection))
+        ws.send(JSON.stringify([buildingSection]))
     })
 }, 5 * 1000);
 

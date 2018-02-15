@@ -17,9 +17,16 @@ export class ElevatorsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.buildingService.getBuildingSections().subscribe(
+    // classic polling way of doing things
+    // this.buildingService.getBuildingSections().subscribe(
+    //   (sections:BuildingSection[]) => {
+    //     console.log("received building section", sections)
+    //     this.sections = sections
+    //   }
+    // )
+    this.buildingService.monitorBuildingSections().subscribe(
       (sections:BuildingSection[]) => {
-        console.log("received building section", sections)
+        console.log("received update", typeof(sections), sections)
         this.sections = sections
       }
     )
