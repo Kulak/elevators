@@ -3,9 +3,19 @@ import { BuildingSection } from '../model/wire/buildingSection'
 import { Elevator } from '../model/wire/elevator';
 import { Person } from './people.service';
 
+/*
+ * Service and its model are in one file,
+ * with exception of wire level structures.
+ */
+
 // Tracks person in the elevator relationship.
-// We don't put it into the Elevator, because Elevator is a wire level object
-// and we don't want to expose people data.
+// Placing location data into person, adding elevator to person,
+// adding people to elevator makes model less "normalized" and 
+// "denormalization" will complicate the application state management at fast rate.
+//
+// However, the model denormalization improves performance of the application.
+//
+// Clean model has been chosen instead of high performance.
 export class ElevatorContainer {
     constructor(
         public elevator: Elevator,

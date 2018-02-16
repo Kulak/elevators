@@ -122,7 +122,7 @@ Backend implements the following calls:
 
 The design on the backend uses services model.
 
-### Notable 3rd party packages on backend
+### Notable 3rd Party Packages on the Backend
 
 1. `body-parser` middleware for ExpressJS web server.  This simplifies handling of JSON data in POST message body.
 2. `ws` package for nodejs to simplify web socket handling and to keep it compatible with expressjs.
@@ -176,6 +176,10 @@ Dialog window has limitations to process the change request:
 
 Thus, reporting of the issued command is delegated to the main application window.  The main application window has enough user space for reporting and user is not locked into waiting action.
 
+### Notable 3rd Party Packages on the Backend
+
+[Angular Material](https://material.angular.io/) is used.
+
 ## Test Cases
 
 Unfortunately, there are none.
@@ -183,6 +187,10 @@ Unfortunately, there are none.
 The application was tested by leaving 1st and 2nd elevators to run using backend people simulation.
 
 3rd elevator was used to test sending change floor command to the elevator.
+
+## Issues
+
+Wire backend vs frontend method difference is not desired.
 
 ## References
 
@@ -195,3 +203,7 @@ An incomplete list of resources used to create this project.
 5. [Simple WebSocket Client](https://chrome.google.com/webstore/detail/simple-websocket-client/pfdhoblngboilpfeibdedpjgfnlcodoo) Chrome Extension
 6. [Anatomy of an HTTP Transaction](https://nodejs.org/en/docs/guides/anatomy-of-an-http-transaction/)
 7. [Websocket with Observable](https://stackoverflow.com/questions/44060315/reconnecting-a-websocket-in-angular-and-rxjs/44067972#44067972) for Angular version of Observable using rxjs.
+8. [Angular 4.3 HttpClient (Accessing REST Web Services With Angular)](https://codingthesmartway.com/angular-4-3-httpclient-accessing-rest-web-services-with-angular/)
+9. [How to Receive a POST Request in Node.js](https://www.twilio.com/blog/2016/07/how-to-receive-a-post-request-in-node-js.html)
+10. [HttpClient](https://angular.io/guide/http) Angular Documentation
+11. [Dialog in Angular Material](https://material.angular.io/components/dialog/overview#configuring-dialog-content-via-code-entrycomponents-code-)

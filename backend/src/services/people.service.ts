@@ -1,6 +1,10 @@
 import { BuildingSectionService } from "./buildingSection.service";
 import { Elevator } from "../model/wire/elevator";
 
+/*
+ * Service and its model are all in one file.
+ */
+
 export class Person {
     constructor(
         public name: string,

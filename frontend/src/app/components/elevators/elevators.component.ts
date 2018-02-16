@@ -21,8 +21,11 @@ export class ElevatorsComponent implements OnInit {
       (sections:BuildingSection[]) => {
         console.log("received update", typeof(sections), sections)
         if (this.selectedElevator) {
+          // loaded data is a set of new objects with the same elevator IDs.
+          //
           // find selected elevator object in the new graph
           // and set it or unset if not found
+          // to preserve selection after data has been updated
           let id = this.selectedElevator.id
           this.selectedElevator = null
           sections.find(
