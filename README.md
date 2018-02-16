@@ -79,7 +79,9 @@ browser refresh.
 
 The project is hardcoded to run on the following ports:
 
-TCP port 4200 serves frontend project and acts as a static web server.
+TCP port 4200 serves frontend project and acts as a static web server.  To display frontend application webbrowser go to:
+
+    http://localhost:4200
 
 TCP port 3000 serves REST API project and acts as application web server without static web pages.
 
