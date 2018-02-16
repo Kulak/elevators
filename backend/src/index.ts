@@ -2,6 +2,7 @@ import * as express from "express"
 import * as http from "http"
 import * as webs from 'ws'
 import * as url from 'url'
+import * as bodyParser from 'body-parser'
 
 import { BuildingSectionService } from "./services/buildingSection.service"
 import { SceneService } from "./services/scene.service";
@@ -22,6 +23,7 @@ console.log(sceneSvc.describe())
 
 const wss = new webs.Server({ server });
 
+app.use(bodyParser.json())
 /* 
  * Allow CORS, production system needs to be restricted to proper domain names.
  * General CORS info:
@@ -32,7 +34,10 @@ const wss = new webs.Server({ server });
  * https://enable-cors.org/server_expressjs.html
  */
 app.use(function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Origin", "*")
+    //res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS")
+    res.header("Access-Control-Allow-Headers", 
+        "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With")
     next();
 });
 
@@ -42,7 +47,9 @@ app.get('/', function (request: express.Request, response: express.Response) {
 })
 app.get("/api/building/elevators", (req,res)=>res.send([sectionSvc.getBuildingSection()]))
 app.get("/api/scene/cycle", (req,res)=>res.send(sceneSvc.oneCycle()))
+app.post("/api/building/elevator", (req,res)=>sectionSvc.updateElevator(req, res))
 
+/* web socket server related */
 let nextConnectionID = 1
 let wsSessions:webs[] = []
 wss.on('connection', (ws: webs, req: http.IncomingMessage) => {

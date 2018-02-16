@@ -21,6 +21,7 @@
     "typescript": "^2.7.1"
   },
   "dependencies": {
+    "body-parser": "^1.18.2",
     "express": "^4.16.2",
     "ws": "^4.0.0"
   }

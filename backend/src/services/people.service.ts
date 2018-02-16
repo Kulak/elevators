@@ -41,7 +41,7 @@ export class PeopleService {
                 person.goBack()
             }
             // work to our goal
-            let container = this.sectionSvc.findContainer(person)
+            let container = this.sectionSvc.findByPerson(person)
             if (container == null)  {
                 // not in elevator; call an elevator regardless if one has been called already
                 console.log("people service: %s is not in any elevator", person.name)

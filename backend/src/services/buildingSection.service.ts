@@ -1,3 +1,4 @@
+import * as express from 'express'
 import { BuildingSection } from '../model/wire/buildingSection'
 import { Elevator } from '../model/wire/elevator';
 import { Person } from './people.service';
@@ -88,9 +89,15 @@ export class BuildingSectionService {
         return null
     }
 
-    findContainer(targetPerson: Person):ElevatorContainer {
+    findByPerson(targetPerson: Person):ElevatorContainer {
         return this.containers.find((container:ElevatorContainer) => {
             return container.person == targetPerson
+        })
+    }
+
+    findByElevator(elevatorId: number):ElevatorContainer {
+        return this.containers.find((container:ElevatorContainer) => {
+            return container.elevator.id == elevatorId
         })
     }
 
@@ -105,10 +112,37 @@ export class BuildingSectionService {
                 elevator.closeDoors()
             }
         })
-   }
+    }
 
-   state():Object {
-       return {"buildingSection": this.buildingSection}
-   }
+    state():Object {
+        return {"buildingSection": this.buildingSection}
+    }
+
+    updateElevator(req: express.Request, res: express.Response) {
+        console.log("update requested", req.body)
+        let update = req.body // JSON.parse(req.body)
+        let container = this.findByElevator(update.id)
+        if (container) {
+            let elevator = container.elevator
+            // validate incoming data is in range
+            if (update.targetFloor < this.buildingSection.bottomFloor
+                || update.targetFloor > this.buildingSection.topFloor) 
+            {
+                console.error("400: Requested target floor %i is outside of valid range",
+                    update.targetFloor)
+                res.statusMessage = "Bad target floor number"
+                res.sendStatus(400)
+                return
+            }
+            elevator.targetFloor = update.targetFloor
+            console.log("200: Forced elevator to go to floor %i", update.targetFloor)
+            res.statusMessage = "Updated successfully"
+            res.send(elevator)
+        } else {
+            console.log("400: Failed to locate elevator container for id %i", update.id)
+            res.statusMessage = "Bad elevator ID"
+            res.sendStatus(400)
+        }
+    }
 
 }

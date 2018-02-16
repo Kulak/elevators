@@ -33,7 +33,8 @@ export class Elevator {
     }
 
     clone():Elevator {
-        return Object.create(this)
+        return new Elevator(this.id, this.currentFloor, 
+            this.targetFloor, this.doorsClosed);
     }
 
 }

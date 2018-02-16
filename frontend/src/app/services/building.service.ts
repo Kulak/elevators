@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core'
-import { HttpClient, HttpErrorResponse } from '@angular/common/http'
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs/Observable'
 import { BehaviorSubject } from 'rxjs/BehaviorSubject'
 import { take, catchError } from 'rxjs/operators'
@@ -71,8 +71,12 @@ export class BuildingService {
     " with target floor " + elevator.targetFloor
     this.messagesSvc.add(message)
 
+    const httpOptions = {
+      // headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+    }    
     const url = "http://localhost:3000/api/building/elevator"
-    return this.http.post<Elevator>(url, elevator).pipe(
+    console.log("Posting elevator", elevator)
+    return this.http.post<Elevator>(url, elevator, httpOptions).pipe(
       catchError((error, caught)=>{ return this.handleError("update elevator", error, caught)})
     )
   }
@@ -82,8 +86,6 @@ export class BuildingService {
     let message:string
     if (error instanceof HttpErrorResponse) {
       message = error.message
-    } else if (error instanceof ErrorEvent) {
-      message = error.error.message
     } else {
       message = `server returned code ${error.status} with body "${error.error}"`
     }

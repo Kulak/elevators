@@ -23,10 +23,11 @@ export class ElevatorComponent implements OnInit {
   }
 
   openDialog(): void {
-    console.log("cloned elevator: ", this.elevator.clone())
+    let tempElevator = this.elevator.clone()
+    console.log("cloned elevator: ", tempElevator)
     let dialogRef = this.dialog.open(ElevatorControllerComponent, {
       width: '250px',
-      data: this.elevator.clone()
+      data: tempElevator
     })
 
     dialogRef.afterClosed().subscribe((result:Elevator) => {
@@ -34,7 +35,9 @@ export class ElevatorComponent implements OnInit {
         console.log('The dialog was closed with', result)
         this.buildingSvc.updateElevator(result).subscribe(updatedElevator => {
           if (updatedElevator) {
-            this.messagesSvc.add("Elevator updated: " + updatedElevator)
+            this.messagesSvc.add(`Elevator ${updatedElevator.id} updated`)
+          } else {
+            this.messagesSvc.add(`Elevator ${updatedElevator.id} completed with errors`)
           }
         })
       }
