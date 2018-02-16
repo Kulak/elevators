@@ -138,11 +138,11 @@ export class BuildingSectionService {
             console.log("200: Forced elevator to go to floor %i", update.targetFloor)
             res.statusMessage = "Updated successfully"
             res.send(elevator)
-        } else {
-            console.log("400: Failed to locate elevator container for id %i", update.id)
-            res.statusMessage = "Bad elevator ID"
-            res.sendStatus(400)
+            return
         }
+        console.log("400: Failed to locate elevator container for id %i", update.id)
+        res.statusMessage = "Bad elevator ID"
+        res.sendStatus(400)
     }
 
 }
