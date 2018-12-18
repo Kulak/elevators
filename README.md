@@ -6,6 +6,11 @@ Nodejs is used to manage both backend and frontend project.  This simplifies ins
 
 A single GIT repository is used to manage both projects to simplify snapshotting of functional application state.
 
+## Status
+
+Purpose: demo project.  
+Status: Abandoned.  
+
 ## Development Environment
 
 OS: Windows  
